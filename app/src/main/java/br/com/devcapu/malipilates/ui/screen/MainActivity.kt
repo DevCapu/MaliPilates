@@ -1,10 +1,9 @@
 package br.com.devcapu.malipilates.ui.screen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,17 +17,35 @@ import br.com.devcapu.malipilates.ui.theme.MaliPilatesTheme
 fun HomeScreen() {
     Scaffold(
         topBar = {
-            SmallTopAppBar(
+            CenterAlignedTopAppBar(
                 title = { Text(text = "Mali Pilates") },
                 colors = TopAppBarDefaults.smallTopAppBarColors(
-                    containerColor = Color(0xFF60678E),
+                    containerColor = MaterialTheme.colorScheme.primary,
                     titleContentColor = Color.White
-                )
+                ),
+                actions = {
+                   IconButton(
+                       colors = IconButtonDefaults.iconButtonColors(contentColor = Color.White),
+                       onClick = { /*TODO*/ }
+                   ) {
+                       Icon(imageVector = Icons.Default.ExitToApp, contentDescription = null)
+                   }
+                },
+                navigationIcon = {
+                    IconButton(
+                        colors = IconButtonDefaults.iconButtonColors(contentColor = Color.White),
+                        onClick = { /* doSomething() */ }) {
+                        Icon(
+                            imageVector = Icons.Filled.Menu,
+                            contentDescription = "Localized description"
+                        )
+                    }
+                }
             )
         },
         floatingActionButton = {
             FloatingActionButton(
-                containerColor = Color(0xFF60678E),
+                containerColor = MaterialTheme.colorScheme.primary,
                 contentColor = Color.White,
                 onClick = {
                     //TODO: DEAL WITH CLICK
@@ -41,7 +58,7 @@ fun HomeScreen() {
         },
         bottomBar = {
             NavigationBar(
-                containerColor = Color(0xFF60678E),
+                containerColor = MaterialTheme.colorScheme.primary,
                 contentColor = Color.White
             ) {
                 NavigationBarItem(
@@ -54,30 +71,39 @@ fun HomeScreen() {
                         unselectedIconColor = Color.LightGray,
                         selectedTextColor = Color.White,
                         unselectedTextColor = Color.LightGray,
-                        indicatorColor = Color(0xFF60678E)
+                        indicatorColor = MaterialTheme.colorScheme.primary
+                    )
+                )
+                NavigationBarItem(
+                    icon = { Icon(Icons.Filled.Event, contentDescription = "Cliente") },
+                    label = { Text("Aula") },
+                    selected = true,
+                    onClick = { },
+                    colors = NavigationBarItemDefaults.colors(
+                        selectedIconColor = Color.White,
+                        unselectedIconColor = Color.LightGray,
+                        selectedTextColor = Color.White,
+                        unselectedTextColor = Color.LightGray,
+                        indicatorColor = MaterialTheme.colorScheme.primary
                     )
                 )
             }
         }
     ) {
-        LazyColumn(
-            modifier = Modifier
-                .padding(
-                    top = it
-                        .calculateTopPadding()
-                        .plus(16.dp)
-                )
-                .padding(
-                    bottom = it
-                        .calculateTopPadding()
-                        .plus(16.dp)
-                )
-                .padding(horizontal = 8.dp)
-        ) {
-            item {
-                Text(text = "Cliente")
-            }
-        }
+      NewUserScreen(
+              modifier = Modifier
+                  .padding(
+                      top = it
+                          .calculateTopPadding()
+                          .plus(12.dp)
+                  )
+                  .padding(
+                      bottom = it
+                          .calculateBottomPadding()
+                          .plus(16.dp)
+                  )
+                  .padding(horizontal = 12.dp)
+          )
     }
 }
 

@@ -2,6 +2,9 @@ package br.com.devcapu.malipilates.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+val PrimaryLight = Color(0xFF60678E)
+val SecondaryLight = Color(0xFF996C71)
+
 val Purple80 = Color(0xFFD0BCFF)
 val PurpleGrey80 = Color(0xFFCCC2DC)
 val Pink80 = Color(0xFFEFB8C8)
